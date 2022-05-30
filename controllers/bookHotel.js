@@ -57,7 +57,7 @@ const getBookHotel = async (req, res) => {
   let userId = req.query.userId;
   console.log(userId);
   let hotel = await userModel.find({ userId });
-  res.send({data: hotel})
+  res.send({ data: hotel });
 };
 
 module.exports = {
