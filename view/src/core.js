@@ -1,3 +1,3 @@
-const BASE_URI = "http://localhost:5000/";
+const BASE_URI = "https://han-hotel-management.herokuapp.com/";
 
 export default BASE_URI;
