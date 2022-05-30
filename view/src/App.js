@@ -5,6 +5,7 @@ import Login from "./Components/Login/Login";
 import SignUp from "./Components/Signup/Signup";
 import "./App.css";
 import CurrentHotel from "./Components/CurrentHotel/CurrentHotel";
+import ProfilePage from "./Components/ProfilePage/ProfilePage";
 // import { useEffect, useState } from "react";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Route path="hotel" element={<CurrentHotel />}>
         <Route path=":hotelName" element={<CurrentHotel />} />
       </Route>
+      <Route path="profile" element={<ProfilePage />} />
     </Routes>
   );
 }

@@ -118,26 +118,17 @@ const HomePage = () => {
     }
   };
 
+  const localUser = localStorage.getItem("user");
+
   const currentHotelHandle = async (e) => {
-    const id = e.currentTarget.getAttribute("id");
-    console.log(id);
-    navigate(`/hotel/${id}`)
-    // await axios
-    //   .get(`${BASE_URI}user/hotel?hotelid=${id}`)
-    //   .then((res) => {
-    //     let data = res.data;
-    //     if (data.length === 0) {
-    //       setCurrentHote("");
-    //     } else {
-    //       setCurrentHote(data);
-    //     }
-    //     localStorage.setItem("hotel", JSON.stringify(data));
-    //     const hotel = localStorage.getItem("hotel");
-    //     const localHotelData = JSON.parse(hotel);
-    //     const localHotelName = localHotelData.hotelName;
-    //     navigate(`/${localHotelName}`);
-    //   })
-    //   .catch((err) => console.log(err));
+    if (!localUser) {
+      toast.error("you need to sign in to see to hotel")
+      navigate("/login");
+    } else {
+      const id = e.currentTarget.getAttribute("id");
+      console.log(id);
+      navigate(`/hotel/${id}`);
+    }
   };
 
   useEffect(() => {

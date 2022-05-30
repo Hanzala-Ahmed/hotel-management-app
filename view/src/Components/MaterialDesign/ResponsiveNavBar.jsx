@@ -14,8 +14,9 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../../Assets/Images/logo.png";
+import { Link, useNavigate } from "react-router-dom";
 
-const pages = ["stays", "Flights", "Cra Rentals", "Attraction"];
+// const pages = ["stays", "Flights", "Cra Rentals", "Attraction"];
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveNavBar = () => {
@@ -23,21 +24,23 @@ const ResponsiveNavBar = () => {
   const [anchorElUser, setAnchorElUser] = useState("");
   const [user, setUser] = useState("");
 
+  const localUser = localStorage.getItem("user");
+  const navigate = useNavigate();
+
   const handleOpenNavMenu = (e) => {
     setAnchorElNav(e.currentTarget);
   };
-  // const handleOpenUserMenu = (e) => {
-  //   setAnchorElUser(e.currentTarget);
-  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  
 
-  const logoutHandler = () => {
-    localStorage.removeItem("user")
-    window.location.reload()
+  const profileHandler = () => {
+    if (localUser) {
+      navigate("/profile");
+    } else {
+      navigate("/login");
+    }
   };
 
   useEffect(() => {
@@ -93,13 +96,7 @@ const ResponsiveNavBar = () => {
               sx={{
                 display: { xs: "block", md: "none" },
               }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            ></Menu>
           </Box>
           <Typography
             variant="h5"
@@ -120,22 +117,17 @@ const ResponsiveNavBar = () => {
             <img src={logo} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              {" "}
+              Home
+            </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {user ? (
+            {localUser ? (
               <Button
                 variant="contained"
-                onClick={logoutHandler}
+                onClick={profileHandler}
                 sx={{
                   backgroundColor: "white",
                   color: "#023D3A",
@@ -147,7 +139,7 @@ const ResponsiveNavBar = () => {
                   },
                 }}
               >
-                Logout
+                Profile
               </Button>
             ) : (
               <Button
@@ -167,22 +159,6 @@ const ResponsiveNavBar = () => {
                 Login
               </Button>
             )}
-            {/* <Button
-              variant="outlined"
-              href="/signup"
-              sx={{
-                color: "white",
-                borderColor: "white",
-                margin: "0px 10px",
-                "&:hover": {
-                  backgroundColor: "white",
-                  color: "#023D3A",
-                  borderColor: "white",
-                },
-              }}
-            >
-              Signup
-            </Button> */}
           </Box>
         </Toolbar>
       </Container>
