@@ -125,7 +125,7 @@ const ResponsiveNavBar = (props) => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {props.profileBtn ? localUser ? (
+            {localUser ? (
               <Button
                 variant="contained"
                 onClick={profileHandler}
@@ -159,7 +159,7 @@ const ResponsiveNavBar = (props) => {
               >
                 Login
               </Button>
-            ) : <></>}
+            ) }
           </Box>
         </Toolbar>
       </Container>

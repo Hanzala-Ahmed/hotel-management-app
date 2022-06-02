@@ -1,0 +1,77 @@
+[debug] [2022-06-02T20:47:06.833Z] ----------------------------------------------------------------------
+[debug] [2022-06-02T20:47:06.835Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Hanzala\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-06-02T20:47:06.836Z] CLI Version:   10.1.2
+[debug] [2022-06-02T20:47:06.836Z] Platform:      win32
+[debug] [2022-06-02T20:47:06.836Z] Node Version:  v16.13.2
+[debug] [2022-06-02T20:47:06.837Z] Time:          Fri Jun 03 2022 01:47:06 GMT+0500 (Pakistan Standard Time)
+[debug] [2022-06-02T20:47:06.837Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-02T20:47:06.916Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-02T20:47:06.917Z] > authorizing via signed-in user (hanzala.ahmed181@gmail.com)
+[debug] [2022-06-02T20:47:06.917Z] [iam] checking project hanhotelmanagemet for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-06-02T20:47:06.920Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hanhotelmanagemet:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-06-02T20:47:09.039Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 02 Jun 2022 20:47:08 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1189","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-06-02T20:47:09.047Z] > refreshing access token with scopes: []
+[debug] [2022-06-02T20:47:09.048Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-06-02T20:47:09.783Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Thu, 02 Jun 2022 20:47:10 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-06-02T20:47:09.815Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/hanhotelmanagemet [none]
+[debug] [2022-06-02T20:47:10.625Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/hanhotelmanagemet 200
+[debug] [2022-06-02T20:47:10.627Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/hanhotelmanagemet {"projectId":"hanhotelmanagemet","projectNumber":"843510043344","displayName":"hanhotelmanagemet","name":"projects/hanhotelmanagemet","resources":{"hostingSite":"hanhotelmanagemet"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'hanhotelmanagemet'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-06-02T20:47:10.654Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-06-02T20:47:10.655Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-06-02T20:47:11.332Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Thu, 02 Jun 2022 20:47:11 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-06-02T20:47:11.351Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/hanhotelmanagemet/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2022-06-02T20:47:13.574Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 02 Jun 2022 20:47:13 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[hanhotelmanagemet]: beginning deploy... 
+[info] i  hosting[hanhotelmanagemet]: found 16 files in build 
+[debug] [2022-06-02T20:47:13.595Z] > refreshing access token with scopes: []
+[debug] [2022-06-02T20:47:13.596Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-06-02T20:47:13.597Z] [hosting] hash cache [YnVpbGQ] stored for 16 files
+[debug] [2022-06-02T20:47:13.598Z] [hosting][hash queue][FINAL] {"max":2,"min":0,"avg":0,"active":0,"complete":16,"success":16,"errored":0,"retried":0,"total":16,"elapsed":6}
+[debug] [2022-06-02T20:47:14.199Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Thu, 02 Jun 2022 20:47:14 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-06-02T20:47:14.236Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/hanhotelmanagemet/versions/00fcb2bbe91ccca5:populateFiles [none]
+[debug] [2022-06-02T20:47:14.238Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/hanhotelmanagemet/versions/00fcb2bbe91ccca5:populateFiles {"files":{"/asset-manifest.json":"69b82e5c7b40bcfd047104398b735239867118110e468fd6c5be93192170b0fd","/favicon.ico":"eae62e993eb980ec8a25058c39d5a51feab118bd2100c4deebb2a9c158ec11f9","/index.html":"5179702e349ead4a6ccded80b051db03bf5d8da93cead627844c8c0b182148e2","/logo192.png":"3ee59515172ee198f3be375979df15ac5345183e656720a381b8872b2a39dc8b","/logo512.png":"ee7e2f3fdb8209c4b6fd7bef6ba50d1b9dba30a25bb5c3126df057e1cb6f5331","/manifest.json":"aff3449bdc238776f5d6d967f19ec491b36aed5fb7f23ccff6500736fd58494a","/robots.txt":"bfe106a3fb878dc83461c86818bf74fc1bdc7f28538ba613cd3e775516ce8b49","/static/css/main.94bbaa43.css":"3c9cc8ea76873fda5d6cf30a7bf48660a74b58b2d318a94a4b06655af6a768af","/static/css/main.94bbaa43.css.map":"90e64445b49a74f8dc7d34712f896fd24bac1fa0aab83c9e95554f842804849c","/static/js/787.39bb0775.chunk.js":"b2ff59b7bdefe7381d28d0e1040758b471f173d6f8249c0e9aa46c96023ffc70","/static/js/787.39bb0775.chunk.js.map":"196e61d9a0ff3a63b0cb0e3281f659a3a6399edc0fab890dc03b4e689903bc0b","/static/js/main.3fc5ec61.js":"526c9b5a051c6a526c42e342a208cd148b3a56e94eb4cd033d1a348a39d32029","/static/js/main.3fc5ec61.js.LICENSE.txt":"fa53fe15e475abf378341e967721aa47266f8b8093b48e5ea3bdefd70664865d","/static/js/main.3fc5ec61.js.map":"53330469ff9e41e607f6fc122eb4df812b6f88b7e4b20971f0fc7b8e8ad6e907","/static/media/hotel.76a8dad9c8dce8614021.jpg":"a2cbca1f01df2ad0f22ec68924297d8051772009dd6ee830f34b3384581c8a5e","/static/media/sliderBg.a871ee069e7af1ff9fb9.jpg":"0b80dbcc1ac2104c9d4486c8c8409c0b53c90eedc8496ac150c6478b51a3c16e"}}
+[debug] [2022-06-02T20:47:16.184Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/hanhotelmanagemet/versions/00fcb2bbe91ccca5:populateFiles 200
+[debug] [2022-06-02T20:47:16.185Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/hanhotelmanagemet/versions/00fcb2bbe91ccca5:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/hanhotelmanagemet/versions/00fcb2bbe91ccca5/files"}
+[debug] [2022-06-02T20:47:16.186Z] [hosting][populate queue][FINAL] {"max":2590,"min":2590,"avg":2590,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2591}
+[debug] [2022-06-02T20:47:16.187Z] [hosting] uploads queued: 0
+[debug] [2022-06-02T20:47:16.188Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1654202836188}
+[info] +  hosting[hanhotelmanagemet]: file upload complete 
+[debug] [2022-06-02T20:47:16.192Z] [hosting] deploy completed after 2616ms
+[debug] [2022-06-02T20:47:16.202Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "hanhotelmanagemet"
+    },
+    "site": "hanhotelmanagemet",
+    "version": "sites/hanhotelmanagemet/versions/00fcb2bbe91ccca5"
+  }
+]
+[info] i  hosting[hanhotelmanagemet]: finalizing version... 
+[debug] [2022-06-02T20:47:16.206Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-06-02T20:47:16.207Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-06-02T20:47:16.859Z] <<< HTTP RESPONSE 200 {"date":"Thu, 02 Jun 2022 20:47:17 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-06-02T20:47:16.901Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/hanhotelmanagemet/versions/00fcb2bbe91ccca5?updateMask=status  
+ {"status":"FINALIZED"}
