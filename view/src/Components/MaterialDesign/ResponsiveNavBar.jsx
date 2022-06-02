@@ -19,7 +19,8 @@ import { Link, useNavigate } from "react-router-dom";
 // const pages = ["stays", "Flights", "Cra Rentals", "Attraction"];
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const ResponsiveNavBar = () => {
+const ResponsiveNavBar = (props) => {
+  console.log(props.profileBtn);
   const [anchorElNav, setAnchorElNav] = useState("");
   const [anchorElUser, setAnchorElUser] = useState("");
   const [user, setUser] = useState("");
@@ -124,7 +125,7 @@ const ResponsiveNavBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {localUser ? (
+            {props.profileBtn ? localUser ? (
               <Button
                 variant="contained"
                 onClick={profileHandler}
@@ -158,7 +159,7 @@ const ResponsiveNavBar = () => {
               >
                 Login
               </Button>
-            )}
+            ) : <></>}
           </Box>
         </Toolbar>
       </Container>

@@ -1,4 +1,5 @@
 const userModel = require("../models/bookNowSchema");
+const hoteluserModel = require("../models/hotelSchema");
 
 const bookHotel = async (req, res) => {
   const {
@@ -18,6 +19,7 @@ const bookHotel = async (req, res) => {
   const filters = {
     hotelId: hotelId,
   };
+
   userModel.find({ userId: userId }, (error, user) => {
     if (error) {
       res.send(error);
@@ -33,31 +35,36 @@ const bookHotel = async (req, res) => {
           if (error) {
             res.send(error);
           } else {
-            console.log("booked");
+            // console.log("booked");
             res.send({ message: "hotel successfully booked", data: newUser });
           }
         });
       } else if (out) {
         res.send({ message: "you have already booked this hotel", user });
       }
-    } else {
-      userModel.create(userObj, (error, newUser) => {
-        if (error) {
-          res.send(error);
-        } else {
-          console.log("booked");
-          res.send({ message: "hotel successfully booked", data: newUser });
-        }
-      });
     }
+    // else {
+    //   userModel.create(userObj, (error, newUser) => {
+    //     if (error) {
+    //       res.send(error);
+    //     } else {
+    //       // console.log("booked");
+    //       res.send({ message: "hotel successfully booked", data: newUser });
+    //     }
+    //   });
+
+    // }
   });
 };
 
 const getBookHotel = async (req, res) => {
   let userId = req.query.userId;
-  console.log(userId);
   let hotel = await userModel.find({ userId });
-  res.send({ data: hotel });
+  hotel.forEach(async (bookedHotel, ind) => {
+    let findbookedHotel = await hoteluserModel.findById(bookedHotel.hotelId);
+    res.send(findbookedHotel);
+    console.log(findbookedHotel);
+  });
 };
 
 module.exports = {

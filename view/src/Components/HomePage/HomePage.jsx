@@ -49,20 +49,52 @@ const HomePage = () => {
       value: "5",
       label: "5",
     },
+    {
+      value: "6",
+      label: "6",
+    },
   ];
 
   const services = [
     {
-      value: "Free",
-      label: "Free",
+      value: "Free Service",
+      label: "Free Service",
     },
     {
-      value: "Room service",
-      label: "Foom service",
+      value: "Room Service",
+      label: "Room Service",
     },
     {
-      value: "Free parking",
-      label: "Free parking",
+      value: "Car rental services",
+      label: "Car rental services",
+    },
+    {
+      value: "Catering services",
+      label: "Catering services",
+    },
+    {
+      value: "Concierge services",
+      label: "Concierge services",
+    },
+    {
+      value: "Courier services",
+      label: "Courier services",
+    },
+    {
+      value: "Doctor on call",
+      label: "Doctor on call",
+    },
+    {
+      value: "Dry cleaning",
+      label: "Dry cleaning",
+    },
+    {
+      value: "Excursions and guided tours",
+      label: "Excursions and guided tours",
+    },
+    {
+      value: "Flower arrangement",
+      label: "Flower arrangement",
     },
   ];
 
@@ -122,7 +154,7 @@ const HomePage = () => {
 
   const currentHotelHandle = async (e) => {
     if (!localUser) {
-      toast.error("you need to sign in to see to hotel")
+      toast.error("you need to sign in to see to hotel");
       navigate("/login");
     } else {
       const id = e.currentTarget.getAttribute("id");

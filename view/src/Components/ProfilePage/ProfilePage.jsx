@@ -18,11 +18,15 @@ import Typography from "@mui/material/Typography";
 import ResponsiveNavBar from "../MaterialDesign/ResponsiveNavBar";
 import hotelImg from "../../Assets/Images/hotel.jpg";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import BASE_URI from "../../core";
 
 const ProfilePage = () => {
   const localUser = localStorage.getItem("user");
   const localUserData = JSON.parse(localUser);
+  const [bookedHotel, setBookedHotel] = useState("");
+
   const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
   ))(({ theme }) => ({
@@ -68,9 +72,19 @@ const ProfilePage = () => {
   useEffect(() => {
     if (!localUser) {
       navigate("/");
-    }
-    else{
-        console.log("hello");
+    } else {
+      const getAllHotel = async () => {
+        await axios
+          .get(`${BASE_URI}user/hotel/book?userId=6291cd6ab31c294d732c43db`)
+          .then((res) => {
+            let data = res.data;
+            setBookedHotel(data);
+            console.log("data", data);
+          })
+          .catch((err) => console.log(err));
+      };
+      getAllHotel();
+      console.log("hello");
     }
   }, []);
 
@@ -108,7 +122,7 @@ const ProfilePage = () => {
               <Grid item xs>
                 <Typography gutterBottom variant="h4" component="div">
                   {/* {val.hotelName} */}
-                  {localUserData.userName}
+                  {localUserData ? localUserData.userName : null}
                 </Typography>
               </Grid>
               <Grid item>
@@ -137,7 +151,7 @@ const ProfilePage = () => {
             </Grid>
             <Typography color="text.secondary" variant="body2">
               <span style={{ fontWeight: "bold" }}>Contact Number: </span>
-              {localUserData.contact}
+              {localUserData ? localUserData.contact : null}
             </Typography>
           </Box>
         </Box>

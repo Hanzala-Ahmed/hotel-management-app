@@ -54,6 +54,7 @@ const CurrentHotel = () => {
   const userObj = {
     userId: userId,
     hotelId: params.hotelName,
+    hotel: [{hote: "hotels"}],
     bankName: bankName,
     creditCard: creditNumber,
     cardCode: cardCode,
