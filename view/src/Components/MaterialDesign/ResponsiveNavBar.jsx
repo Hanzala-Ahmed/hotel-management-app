@@ -20,7 +20,6 @@ import { Link, useNavigate } from "react-router-dom";
 // const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveNavBar = (props) => {
-  console.log(props.profileBtn);
   const [anchorElNav, setAnchorElNav] = useState("");
   const [anchorElUser, setAnchorElUser] = useState("");
   const [user, setUser] = useState("");

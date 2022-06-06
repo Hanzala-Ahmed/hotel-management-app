@@ -17,6 +17,9 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@mui/material";
+import BASE_URI from "../../core";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -69,27 +72,91 @@ const names = [
   "Flower arrangement",
 ];
 
-function getStyles(name, personName, theme) {
+function getStyles(name, hotelServices, theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      hotelServices.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
 }
 
 const HotelAdmin = () => {
+  const localUser = localStorage.getItem("user");
+  const userLocal = JSON.parse(localUser);
   const theme = useTheme();
-  const [personName, setPersonName] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hotelServices, setServices] = useState([]);
+  const [room, setRoom] = useState("");
+  const [detail, setDetail] = useState("");
+  const [hotel, setHotel] = useState("");
+  const [price, setPrice] = useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     const {
       target: { value },
-    } = event;
-    setPersonName(
+    } = e;
+    setServices(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
     );
+  };
+
+  const roomHandleChange = (e) => {
+    setRoom(e.target.value);
+  };
+
+  const detailHandle = (e) => {
+    setDetail(e.target.value);
+  };
+
+  const hotelHandle = (e) => {
+    setHotel(e.target.value);
+  };
+
+  const priceHandle = (e) => {
+    setPrice(e.target.value);
+  };
+
+  const hotelObj = {
+    userId: userLocal._id,
+    hotelName: hotel,
+    price: price,
+    desc: detail,
+    services: hotelServices,
+    noOfRooms: room,
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    // console.log(hotelObj);
+    let hotel = async () => {
+      await axios
+        .post(`${BASE_URI}user/hotel`, hotelObj)
+        .then((res) => {
+          let data = res.data;
+          console.log(data);
+          setLoading(false);
+          if (data.message) {
+            console.log("data");
+            toast.error(data.message);
+          } else {
+            toast.success("Your hotel successfully created");
+            setServices("")
+            setRoom("")
+            setDetail("")
+            setHotel("")
+            setPrice("")
+          }
+        })
+        .catch((err) => console.log(err));
+    };
+    hotel();
+    // console.log(price);
+    // console.log(detail);
+    // console.log(services);
+    // console.log(room);
   };
   return (
     <>
@@ -101,7 +168,7 @@ const HotelAdmin = () => {
         <Box
           component="form"
           noValidate
-          // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
           sx={{ mt: 3, mb: 4 }}
         >
           <Grid container spacing={2}>
@@ -114,7 +181,7 @@ const HotelAdmin = () => {
                 id="hotelName"
                 label="Hotel Name"
                 autoFocus
-                // onChange={firstNameHandle}
+                onChange={hotelHandle}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -134,12 +201,12 @@ const HotelAdmin = () => {
                 </InputLabel>
                 <OutlinedInput
                   id="outlined-adornment-amount"
-                  // value="Rs"
-                  // onChange={handleChange("amount")}
+                  onChange={priceHandle}
                   startAdornment={
                     <InputAdornment position="start">Rs</InputAdornment>
                   }
                   label="Price"
+                  type="number"
                 />
               </FormControl>
             </Grid>
@@ -154,7 +221,7 @@ const HotelAdmin = () => {
                 type="text"
                 inputProps={{ maxLength: 200 }}
                 helperText="less than 200 words"
-                // onChange={numberHandle}
+                onChange={detailHandle}
               />
             </Grid>
             <Grid item xs={12}>
@@ -164,7 +231,7 @@ const HotelAdmin = () => {
                   labelId="demo-multiple-chip-label"
                   id="demo-multiple-chip"
                   multiple
-                  value={personName}
+                  value={hotelServices}
                   onChange={handleChange}
                   input={
                     <OutlinedInput id="select-multiple-chip" label="Chip" />
@@ -182,7 +249,7 @@ const HotelAdmin = () => {
                     <MenuItem
                       key={name}
                       value={name}
-                      style={getStyles(name, personName, theme)}
+                      style={getStyles(name, hotelServices, theme)}
                     >
                       {name}
                     </MenuItem>
@@ -196,8 +263,8 @@ const HotelAdmin = () => {
                 id="outlined-select-currency"
                 select
                 label="Rooms"
-                // value={room}
-                // onChange={roomHandleChange}
+                value={room}
+                onChange={roomHandleChange}
               >
                 {rooms.map((option) => (
                   <MenuItem
@@ -218,21 +285,32 @@ const HotelAdmin = () => {
               />
             </Grid> */}
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Create
-          </Button>
-          <Grid container justifyContent="flex-end">
+          {loading ? (
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, pointerEvents: "none", opacity: 0.4 }}
+            >
+              Loading...
+            </Button>
+          ) : (
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Create
+            </Button>
+          )}
+
+          {/* <Grid container justifyContent="flex-end">
             <Grid item>
               <Link href="/login" variant="body2">
                 Already have an account? Login
               </Link>
             </Grid>
-          </Grid>
+          </Grid> */}
         </Box>
       </Container>
     </>

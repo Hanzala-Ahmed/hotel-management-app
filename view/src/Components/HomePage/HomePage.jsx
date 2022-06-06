@@ -61,8 +61,8 @@ const HomePage = () => {
       label: "Free Service",
     },
     {
-      value: "Room Service",
-      label: "Room Service",
+      value: "Room service",
+      label: "Room service",
     },
     {
       value: "Car rental services",
@@ -98,6 +98,7 @@ const HomePage = () => {
     },
   ];
 
+  const [loading, setLoading] = useState(false);
   const [currency, setCurrency] = useState("");
   const [room, setRoom] = useState("");
   const [service, setService] = useState("");
@@ -126,17 +127,20 @@ const HomePage = () => {
       : {};
 
   const searchHandler = async () => {
+    setLoading(true)
     if (currency && room && service) {
       await axios
         .get(
           `${BASE_URI}user/hotel?price=${searchObj.prices}&rooms=${searchObj.room}&service=${searchObj.service}`
         )
         .then((res) => {
-          let data = res.data;
+          let data = res.data
+          console.log("data");
           if (data.length === 0) {
             setAllHotel("");
           } else {
             setAllHotel(data);
+            setLoading(false)
           }
           console.log("data", data);
         })
@@ -283,6 +287,7 @@ const HomePage = () => {
         maxWidth="xl"
         sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
+        {loading?(<span>loading...</span>):(<></>)}
         {allHotel ? (
           allHotel.map((val, ind) => {
             return (
