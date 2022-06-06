@@ -169,13 +169,15 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    setLoading(true)
     const getAllHotel = async () => {
       await axios
-        .get(`${BASE_URI}user/hotel`)
-        .then((res) => {
-          let data = res.data;
-          setAllHotel(data);
-          console.log("er", data);
+      .get(`${BASE_URI}user/hotel`)
+      .then((res) => {
+        let data = res.data;
+        setAllHotel(data);
+        console.log("er", data);
+        setLoading(false)
         })
         .catch((err) => console.log(err));
     };
