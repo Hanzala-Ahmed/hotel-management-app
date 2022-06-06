@@ -138,6 +138,7 @@ const HomePage = () => {
           console.log("data");
           if (data.length === 0) {
             setAllHotel("");
+            setLoading(false)
           } else {
             setAllHotel(data);
             setLoading(false)
